@@ -4,22 +4,16 @@ A small toolkit for playing in **31 equal divisions of the octave (31EDO)** with
 
 31EDO divides the octave into 31 equal steps (each ≈38.7 cents). It is close to quarter-comma meantone, so ordinary functional harmony works, while also providing near-just intervals that 12EDO lacks: the harmonic seventh (7/4), the neutral third (11/9), and many microtonal colors in between.
 
-## Files
-
-- [edo31_example_en.tidal](edo31_example_en.tidal) — toolkit + commented examples (English)
-- [edo31_example_ja.tidal](edo31_example_ja.tidal) — the same, with Japanese comments
-
-## Usage
-
-1. Start TidalCycles as usual (with SuperDirt running).
-2. Open one of the `.tidal` files and evaluate the entire `let` block at the top once.
-3. Evaluate the `d1 ...` examples one at a time. `hush` stops the sound.
-
 The core trick is one line:
 
 ```haskell
 e31 p = p |* note (12/31)
 ```
+
+## Files
+
+- [edo31_example_en.tidal](edo31_example_en.tidal) — toolkit + commented examples (English)
+- [edo31_example_ja.tidal](edo31_example_ja.tidal) — the same, with Japanese comments
 
 Patterns are written in 31EDO *steps*, then scaled so that Tidal/SuperDirt's usual "12 notes per octave" pitch handling plays them at the right frequency. Everything else builds on this.
 
@@ -69,9 +63,4 @@ Highlights: `harm7` is a 4:5:6:7 harmonic-seventh chord, `submin` uses the submi
 | Harmonic series | `harmonics` `otonal` |
 | Symmetric scales | `wholetone` `dim8` |
 
-```haskell
-d1
-  $ s "supervibe*8"
-  # e31 (note (scale31on "<c f g a>/4" "<major mohajira orwell9 harmonics>" "0 .. 7"))
-  |+ note "c5"
-```
+
