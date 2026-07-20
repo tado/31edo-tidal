@@ -1,33 +1,3 @@
--- ============================================================
--- 31EDO library + examples (evaluate the whole let block first)
--- ============================================================
--- 1 step = 1200/31 ≈ 38.7 cents. Octave = 31 steps.
---
--- ▍Quick reference (ready-to-play functions)
---   n31    "c ehf as3"                note names → single notes
---   ch31   "<c:maj f4:harm7:i>"       chord names → chords (plain notes ok too)
---   sc31   "major" "0 .. 7"           scale name + degrees → melody
---   sc31on "c" "major" "0 .. 7"       scale with a named root
---   up31 18 $ ...                     transpose in 31EDO steps (18 = fifth)
---   arpSteady 8 $ ch31 "..."          n-slot arpeggio over any chord
---   chordList31 / scaleList31         show all available chord/scale names
---
--- ▍Note name = root (c d e f g a b) + accidental + octave (default 5)
---   accidentals: s = # (+2)   f = ♭ (-2)   hs = half-# (+1)  hf = half-♭ (-1)
---                ss = ## (+4)  ff = ♭♭ (-4)
---   e.g. "c"  "ehf" (E half-flat = neutral third)  "as3" (A#3 = low harmonic 7th of C)
---
--- ▍Chord name = note name + ":" + quality + modifiers (0 or more, all ":"-separated)
---   modifiers: i / iN  = invert N times      o = open voicing
---              d / dN  = drop Nth-from-top note an octave (plain d = drop-2)
---              number N = extend/truncate to N notes (continuing up the octaves)
---   e.g. "c:maj"  "e3:harm7"  "f4:maj:i2"  "g:dom7:d"  "c:maj:6"
---
--- ▍Low-level functions (return raw 31EDO steps as Pattern Note)
---   nt31 = note names → steps    chd31 = chord names → steps
---   scale31 / scale31on = scales → steps
---   st31 = steps → note value    e31 = ControlPattern version (legacy compat)
--- ============================================================
 let -- ── pitch core ─────────────────────────────────────────
     edo = 31
     e31 p = p |* note (12/edo)
